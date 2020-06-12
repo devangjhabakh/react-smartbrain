@@ -17,15 +17,16 @@ class SignIn extends Component{
     onSubmitSignIn = () => {
         fetch('http://localhost:3000/signin', {
             method: 'post',
-            header: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email: this.state.signInEmail,
                 password: this.state.signInPassword
             })
         })
         .then(response => response.json())
-        .then(data => {
-            if(data === 'success'){
+        .then(user => {
+            if(1){
+                this.props.loadUser(user);
                 this.props.onRouteChange('home');
             }
         })
